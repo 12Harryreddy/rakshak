@@ -59,3 +59,7 @@ class ChatBot : AppCompatActivity() {
         }
     }
 }
+
+fun mergingtry() {
+
+}
