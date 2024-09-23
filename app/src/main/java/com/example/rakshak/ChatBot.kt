@@ -37,15 +37,7 @@ class ChatBot : AppCompatActivity() {
         }
 
     }
-    <<<<<<< HEAD
-    private fun donothing() {
-        println("by mistake")
-    }
-    =======
-    private fun damm() {}
-
-    >>>>>>> Experimental
-    private suspend fun getResponse(question: String): String = withContext(Dispatchers.IO) {
+    private suspend fun getResponse(question:String) : String = withContext(Dispatchers.IO){
         return@withContext try {
             val generativeModel =
                 GenerativeModel(
@@ -64,14 +56,5 @@ class ChatBot : AppCompatActivity() {
             "Error: ${e.message}"
         }
     }
-
-
-}
-fun inmaster() {
-
-}
-fun mergingtry() {
-
-
 }
 
