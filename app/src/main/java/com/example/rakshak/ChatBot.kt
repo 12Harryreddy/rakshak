@@ -9,7 +9,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.ai.client.generativeai.BuildConfig
 import okhttp3.OkHttpClient
 import com.google.ai.client.generativeai.GenerativeModel
 import kotlinx.coroutines.CoroutineScope
@@ -19,12 +18,12 @@ import kotlinx.coroutines.withContext
 
 class ChatBot : AppCompatActivity() {
     private val client = OkHttpClient()
+    private val apikey = BuildConfig.botkey
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_chat_bot)
 
-        val apiKey = "AIzaSyBAg3wkWOY98M6CmSJ9zqtlE1AH9Xm_7Po"
         val input = findViewById<EditText>(R.id.input)
         val output = findViewById<TextView>(R.id.output)
         val button = findViewById<Button>(R.id.buttonbot)
@@ -45,7 +44,7 @@ class ChatBot : AppCompatActivity() {
                     // Specify a Gemini model appropriate for your use case
                     modelName = "gemini-1.5-flash",
                     // Access your API key as a Build Configuration variable (see "Set up your API key" above)
-                    apiKey = "AIzaSyBAg3wkWOY98M6CmSJ9zqtlE1AH9Xm_7Po"
+                    apiKey = apikey
                 )
 
             val prompt =
