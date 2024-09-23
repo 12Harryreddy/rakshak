@@ -60,3 +60,6 @@ class ChatBot : AppCompatActivity() {
         }
     }
 }
+fun inmaster() {
+
+}
