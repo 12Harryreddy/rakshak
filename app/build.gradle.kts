@@ -1,6 +1,10 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
 }
 
 android {
@@ -8,6 +12,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
+
         applicationId = "com.example.rakshak"
         minSdk = 30
         targetSdk = 34
@@ -15,7 +20,11 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        val properties : Properties = gradleLocalProperties(rootDir,providers)
+
+        buildConfigField("String", "botkey", "\"${properties.getProperty("botkey")}\" " )
     }
+
 
     buildTypes {
         release {
@@ -24,10 +33,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
         }
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -39,6 +50,7 @@ android {
 }
 
 dependencies {
+
     implementation ("com.google.android.gms:play-services-location:21.0.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
     implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
